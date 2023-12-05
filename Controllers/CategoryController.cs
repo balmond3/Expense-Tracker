@@ -47,19 +47,27 @@ namespace Expense_Tracker.Controllers
         // GET: Category/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
-            if(id == 0)
+            try
             {
-                return View(new Category());
-            }
-                 
-            
-            else
-            {
+                if (id == 0)
+                {
+                    return View(new Category());
+                }
 
-                return View(_context?.Category.Find(id));
+
+                else
+                {
+
+                    return View(_context?.Categories.Find(id));
+                }
+
+            }catch (Exception ex)
+            {
+                return View(ex);
             }
-            
-            
+
+
+
         }
 
         // POST: Category/AddOrEdit
@@ -67,11 +75,12 @@ namespace Expense_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //this will cause an error
-       /* [ValidateAntiForgeryToken]*/
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit([Bind("CategoryId,Title,Icon,Type")] Category category)
         {
             if (ModelState.IsValid)
             {
+
                 if (category.CategoryId == 0)
                 {
                     _context.Add(category);
