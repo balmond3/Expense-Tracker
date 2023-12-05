@@ -1,7 +1,8 @@
 ﻿@model Expense_Tracker.Models.Category
 
 @{
-    ViewData["Title"] = "Create";
+    <!--ViewData["Title"] = "Create";-->
+    ViewData["PageTitle"] = Model.CategoryId == 0 ? "Create a new category" : "Edit category";
 }
 
 
@@ -35,8 +36,8 @@
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
            
-            <ejs-button id="submit" type="submit" cssClass="e-success" content="Submit"/>
-
+            <ejs-button id="submit" type="submit"  cssClass="e-success" content="Submit"/>
+                @Html.AntiForgeryToken()
         </form>
         
     </div>

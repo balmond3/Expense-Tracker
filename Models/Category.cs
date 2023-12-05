@@ -18,5 +18,15 @@ namespace Expense_Tracker.Models
 
         //Default to expense
         public string Type { get; set; } = "Expense";
+
+        [NotMapped]
+        public string? TitleWithIcon 
+        {
+            get
+            {
+                return this.Icon + " " + this.Title;
+            }
+                
+        }
     }
 }

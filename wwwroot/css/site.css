@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  
 }
 
 @media (min-width: 768px) {
@@ -9,8 +10,13 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-family: "Inter"
+}
+/*Exclude syncfusion */
+*:not(.fa-solid):not(.fa):not(.e-icons){
+    font-family:"Inter"
 }
 
 body {
@@ -21,6 +27,23 @@ body {
 
 .e-bigger {
     font-size: x-large;
+}
+
+/*Button*/
+.btn:focus, .btn:active{
+    outline:none !important;
+    box-shadow:none;
+}
+/*hyperlink*/
+.no-a-decoration, .no-a-decoration:hover{
+    text-decoration:none;
+    color:inherit;
+}
+
+/*Grid*/
+.e-grid{
+    border:0;
+    border-radius:5px;
 }
 
 /*Radio button group*/

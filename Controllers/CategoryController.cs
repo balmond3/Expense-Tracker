@@ -27,7 +27,7 @@ namespace Expense_Tracker.Controllers
         }
 
         // GET: Category/Details/5
-        public async Task<IActionResult> Details(int? id)
+      /*  public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Category == null)
             {
@@ -42,7 +42,7 @@ namespace Expense_Tracker.Controllers
             }
 
             return View(category);
-        }
+        }*/
 
         // GET: Category/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
@@ -142,7 +142,7 @@ namespace Expense_Tracker.Controllers
         }*/
 
         // GET: Category/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+      /*  public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Category == null)
             {
@@ -157,7 +157,7 @@ namespace Expense_Tracker.Controllers
             }
 
             return View(category);
-        }
+        }*/
 
         // POST: Category/Delete/5
         [HttpPost, ActionName("Delete")]
