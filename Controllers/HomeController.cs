@@ -13,8 +13,13 @@ namespace Expense_Tracker.Controllers
             _logger = logger;
         }
 
+        public IActionResult Transaction()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
+
             return View();
         }
 

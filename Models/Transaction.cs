@@ -23,7 +23,9 @@ namespace Expense_Tracker.Models
         public string? Note { get; set; }
 
         //Default to todays date
+        /*[DisplayFormat(DataFormatString = "{0:MMM-dd-yy}", ApplyFormatInEditMode = true)]*/
         public DateTime Date { get; set; } = DateTime.Now;
+    /*    public string FormattedDate => Date.ToString("MMM-dd-yy");*/
 
         [NotMapped] 
         public string? CategoryTitleWithIcon 
