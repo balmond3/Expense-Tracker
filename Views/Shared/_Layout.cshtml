@@ -17,8 +17,8 @@
 </head>
 <body class="e-bigger">
     <partial name="_SideBar" />
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    
+@*        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Dashboard" asp-action="Index">Expense_Tracker</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -40,8 +40,21 @@
                 </div>
             </div>
         </nav>
-   
-    </header>
+
+*@  
+<!--dock target will target both nav and main content-->
+<div class="dock-target">
+<nav class="navbar sticky-top">
+    <div class="container-fluid py=2 px-4">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <div>
+            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-message"></i>
+            <img class ="profile-pic"src="~/LinekdIN PIC.jpg" />
+        </div>
+    </div>
+
+   </nav>
     <div class="main-content">
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -78,6 +91,7 @@
             </div>
         </div>
       
+    </div>
     </div>
     </div>
    

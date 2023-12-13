@@ -29,13 +29,13 @@ namespace Expense_Tracker.Controllers
 
             //Total Income
             int TotalIncome = SelectedTransactions
-                .Where(i => i.Category.Type == "Income")
+                .Where(i => i.Category?.Type == "Income")
                 .Sum(j => j.Amount);
             ViewBag.TotalIncome = TotalIncome.ToString("C0");
 
             //Total Expense
             int TotalExpense = SelectedTransactions
-                .Where(i => i.Category.Type == "Expense")
+                .Where(i => i.Category?.Type == "Expense")
                 .Sum(j => j.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
@@ -47,18 +47,18 @@ namespace Expense_Tracker.Controllers
 
             //Doughnut chart
             ViewBag.DoughnutChartData = SelectedTransactions
-                .Where(i => i.Category.Type == "Expense")
-                .GroupBy(j => j.Category.CategoryId)
+                .Where(i => i.Category?.Type == "Expense")
+                .GroupBy(j => j.Category?.CategoryId)
                 .Select(k => new
                 {
-                    categoryTitleWithIcon = k.First().Category.Icon+ " " + k.First().Category.Title,
+                    categoryTitleWithIcon = k.First().Category?.Icon+ " " + k.First().Category?.Title,
                     amount = k.Sum(j => j.Amount),
                     formattedAmount = k.Sum(j => j.Amount).ToString("C0", CultureInfo.CurrentCulture)
                 })
                 .OrderByDescending(l=>l.amount).ToList(); 
             //Spline Chart - Income vs Expense
             List<SplineChartData> IncomeSummary = SelectedTransactions
-                .Where(i=> i.Category.Type == "Income")
+                .Where(i=> i.Category?.Type == "Income")
                 .GroupBy(j=>j.Date)
                 .Select(k=> new SplineChartData()
                 {
@@ -67,7 +67,7 @@ namespace Expense_Tracker.Controllers
                 }).ToList();
 
             List<SplineChartData> ExpenseSummary = SelectedTransactions
-              .Where(i => i.Category.Type == "Expense")
+              .Where(i => i.Category?.Type == "Expense")
               .GroupBy(j => j.Date)
               .Select(k => new SplineChartData()
               {
@@ -90,6 +90,14 @@ namespace Expense_Tracker.Controllers
                                           income = income == null ? 0 : income.income,
                                           expense = expense == null ? 0 : expense.expense,
                                       };
+
+            //Recent transactions
+            ViewBag.RecentTransactions =  _context.Transactions
+                .Include(i => i.Category)
+                .OrderByDescending(j => j.Date)
+                .Take(5)
+                .ToList();
+
 
             return View();
         }
